@@ -89,19 +89,20 @@ class MountainCarEnv(gym.Env):
 
             l,r,t,b = -carwidth/2, carwidth/2, carheight, 0
             car = rendering.FilledPolygon([(l,b), (l,t), (r,t), (r,b)])
+            car.set_color(.49, .76, .26)
             car.add_attr(rendering.Transform(translation=(0, clearance)))
             self.cartrans = rendering.Transform()
             car.add_attr(self.cartrans)
             self.viewer.add_geom(car)
             frontwheel = rendering.make_circle(carheight/2.5)
-            frontwheel.set_color(.179, .222, .289)
+            frontwheel.set_color(.279, .222, .289)
             frontwheel.add_attr(rendering.Transform(translation=(carwidth/4,clearance)))
             frontwheel.add_attr(self.cartrans)
             self.viewer.add_geom(frontwheel)
             backwheel = rendering.make_circle(carheight/2.5)
             backwheel.add_attr(rendering.Transform(translation=(-carwidth/4,clearance)))
             backwheel.add_attr(self.cartrans)
-            backwheel.set_color(.179, .222, .289)
+            backwheel.set_color(.279, .222, .289)
             self.viewer.add_geom(backwheel)
             flagx = (self.goal_position-self.min_position)*scale
             flagy1 = self._height(self.goal_position)*scale
